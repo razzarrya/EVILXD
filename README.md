@@ -9,12 +9,12 @@
 
 -------------
 
-## [REPL](https://t.me/LEGEND_STRINGSESSIONBOT)
+## [REPL](https://replit.com/@PROBOY-OP/PRO-LEGENDBOT#main.py)
 ## ☁️ <a name="self_host"></a>Self Host
 
 ```bash
-$ git clone https://github.com/LEGEND-OS/Music-VC
-$ cd MusicPlayer
+$ git clone https://github.com/LEGEND-AI/LEGEND-MUSIC
+$ cd LEGEND-MUSIC
 $ cp sample.env .env
 < edit .env with your own values >
 $ sudo docker build . -t musicplayer
@@ -26,7 +26,7 @@ $ sudo docker run musicplayer
 - `API_ID`: Telegram app id.
 - `API_HASH`: Telegram app hash.
 - `SESSION`: Pyrogram string session. You can generate from [here](https://replit.com/@AsmSafone/genStr).
-- `SUDOERS`: ID of sudo users (separate multiple ids with space).
+- `SUDO_USERS`: ID of sudo users (separate multiple ids with space).
 - `PREFIX`: Commad prefixes (separate multiple prefix with space). Eg: `! /`
 - `LANGUAGE`: An [available](#languages) bot language (can change it anytime). Default: `en`
 - `CUSTOM_QUALITY`: Custom stream quality for the userbot in vc. Default: `high`
