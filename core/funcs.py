@@ -1,20 +1,4 @@
-"""
-Music Player, Telegram Voice Chat Bot
-Copyright (c) 2021  Asm Safone <https://github.com/LEGEND-OS>
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>
-"""
 
 import os
 import re
@@ -44,7 +28,7 @@ from pytgcalls.types.input_stream.quality import (
 )
 
 
-safone = {}
+legend = {}
 ydl_opts = {
     "quiet": True,
     "geo_bypass": True,
@@ -161,9 +145,9 @@ async def delete_messages(messages):
 
 async def skip_stream(song: Song, lang):
     chat = song.request_msg.chat
-    if safone.get(chat.id) is not None:
+    if legend.get(chat.id) is not None:
         try:
-            await safone[chat.id].delete()
+            await legend[chat.id].delete()
         except:
             pass
     infomsg = await song.request_msg.reply_text(lang["downloading"])
@@ -178,7 +162,7 @@ async def skip_stream(song: Song, lang):
         chat.id,
         song.thumb,
     )
-    safone[chat.id] = await song.request_msg.reply_photo(
+    legend[chat.id] = await song.request_msg.reply_photo(
         photo=thumb,
         caption=lang["playing"]
         % (
@@ -199,9 +183,9 @@ async def skip_stream(song: Song, lang):
 
 async def start_stream(song: Song, lang):
     chat = song.request_msg.chat
-    if safone.get(chat.id) is not None:
+    if legend.get(chat.id) is not None:
         try:
-            await safone[chat.id].delete()
+            await legend[chat.id].delete()
         except:
             pass
     infomsg = await song.request_msg.reply_text(lang["downloading"])
@@ -217,7 +201,7 @@ async def start_stream(song: Song, lang):
         chat.id,
         song.thumb,
     )
-    safone[chat.id] = await song.request_msg.reply_photo(
+    legend[chat.id] = await song.request_msg.reply_photo(
         photo=thumb,
         caption=lang["playing"]
         % (
