@@ -28,7 +28,7 @@
         "description": "Pyrogram session string, get it from https://replit.com/@AsmSafone/genStr",
         "required": true
       },
-      "SUDOERS": {
+      "SUDO_USERS": {
         "description": "ID of sudo users who have special access (separate multiple ids with space)",
         "required": false
       },
