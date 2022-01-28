@@ -34,9 +34,9 @@ from pytgcalls.exceptions import NoActiveGroupCall, GroupCallNotFound
 from core.decorators import register, language, handle_error, only_admins
 
 REPO = """
- **Music Player**
-- Repo: [GitHub](https://github.com/LEGEND-OS/MUSIC-VC)
-- Owner: @The_LegendBoy
+👨‍💻**Legend Music Player**👨‍💻
+- Repo: [GitHub](https://github.com/LEGEND-AI/LEGEND-MUSIC)
+- [Owner](https://t.me/LegendBoy_XD)
 """
 
 
@@ -53,7 +53,7 @@ async def repo(_, message: Message):
 )
 @handle_error
 async def ping(_, message: Message):
-    await message.reply_text(f"🤖 **Pong!**\n`{await pytgcalls.ping} ms`")
+    await message.reply_text(f"📜 **Pong!**\n`{await pytgcalls.ping} ms`")
 
 
 @app.on_message(
@@ -72,6 +72,7 @@ async def help(_, message: Message, lang):
 )
 @register
 @language
+@only_admins
 @handle_error
 async def play_stream(_, message: Message, lang):
     chat_id = message.chat.id
@@ -117,6 +118,7 @@ async def play_stream(_, message: Message, lang):
 )
 @register
 @language
+@only_admins
 @handle_error
 async def live_stream(_, message: Message, lang):
     chat_id = message.chat.id
