@@ -36,7 +36,7 @@ from core.decorators import register, language, handle_error, only_admins
 REPO = """
 👨‍💻**Legend Music Player**👨‍💻
 - Repo: [GitHub](https://github.com/LEGEND-AI/LEGEND-MUSIC)
-- [Owner](https://t.me/LegendBoy_XD)
+- ⚜ [Owner](https://t.me/LegendBoy_XD) ⚜
 """
 
 
@@ -61,7 +61,9 @@ async def ping(_, message: Message):
     & filters.group
     & ~filters.edited
 )
+@register
 @language
+@only_admins
 @handle_error
 async def help(_, message: Message, lang):
     await message.reply_text(lang["helpText"].replace("<prefix>", config.PREFIXES[0]))
